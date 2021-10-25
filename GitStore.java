@@ -16,3 +16,62 @@ Output: 0
 
 Input: guests = ['A','A','A','B','B','A'], gifts = ['A','B','B','B','A','A']
 Output: 3
+
+  
+  
+  import java.util.*;
+
+public class HelloWorld{
+
+     public static void main(String []args){
+        System.out.println("Hello World");
+        
+        // String[] guests = {"A", "A", "B", "B"};
+        //  String[] gifts = {"B", "A", "B", "A"};
+         
+         
+          String[] guests = {"A", "A", "A", "B", "B", "A"};  //queue
+           
+         String[] gifts = {"A", "B", "B", "B", "A", "A"};   //stack
+         
+         System.out.println((numberOfGuest(guests, gifts)));
+     }
+     
+     public static int numberOfGuest(String[] guests, String[] gifts){
+         if (guests == null || gifts == null || guests.length == 0 || gifts.length == 0){
+             return 0;
+         }
+         Stack<String> stack = new Stack<>();
+         Queue<String> queue = new LinkedList<>();
+         
+         for (String guest : guests){
+             queue.offer(guest);
+         }
+         for (int i = gifts.length - 1; i >= 0; i--){
+             stack.add(gifts[i]);
+         }
+         int count = 0;
+         
+         // the max swap should be 2 * len
+         while (!stack.isEmpty() && !queue.isEmpty() && count <= 2 *  guests.length){
+             
+             if (stack.peek().equals(queue.peek())){
+                 System.out.println("a " + stack.peek() + "--" + queue.peek());
+                    stack.pop();
+                    queue.poll();
+                    count++;
+             } else {
+                 
+                 String s = queue.poll();
+                 //System.out.println(s);
+                 queue.offer(s);
+                 
+
+                 System.out.println("---");
+                 count++;
+             }
+
+         }
+         return stack.isEmpty() ? 0 : stack.size();
+     }
+}
