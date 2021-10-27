@@ -17,33 +17,36 @@ Output: true
 Explanation: For example, swap the first character with the last character of s2 to make "bank".
   
   
-  class Solution {
+ //     - find two mismatches, if mismatches more than 2 return false
+// - mismatch check for chars. sa[0]==ta[1] && sa[1] ==ta[0]
+    
     public boolean areAlmostEqual(String s1, String s2) {
-        if (s1.length() != s2.length()){
+        char[] char1 = new char[2];
+        char[] char2 = new char[2];
+        
+        int count = 0;
+        
+        if(s1.length() != s2.length()){
             return false;
         }
-        int start = 0;
-        int end = s1.length() - 1;
         
-        if (s1.equals(s2)){
-            return true;
-        }
-        while (start < end){
-            char[] ch = s1.toCharArray();
+        for(int i = 0;i<s1.length(); i++){
+            char x = s1.charAt(i);
+            char y = s2.charAt(i);
             
-            char temp = ch[start];
-            ch[start] = ch[end];
-            ch[end] = temp;
-            
-            if (String.valueOf(ch).equals(s2)){
-                return true;
-            }
-            start++;
-            end--;
+            if(x != y){
+                if(count == 2){
+                    return false;
+                }
+                char1[count] = x;
+                char2[count] = y;
+                count++;
+            } 
         }
-        if (){
-            
-        }
-        return false;
+        
+        // "bank" && "kany". (we need to validate if the swap turns out to be valid or not.)
+
+
+        return char1[0] == char2[1] && char1[1] == char2[0];
     }
 }
