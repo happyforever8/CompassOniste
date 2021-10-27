@@ -1,38 +1,4 @@
-Skip to content
-Search or jump to…
-Pull requests
-Issues
-Marketplace
-Explore
- 
-@happyforever8 
-happyforever8
-/
-Compass
-Public
-1
-00
-Code
-Issues
-Pull requests
-Actions
-Projects
-Wiki
-Security
-Insights
-Settings
-Compass/Justify Text.java /
-@happyforever8
-happyforever8 Update Justify Text.java
-Latest commit da1636b 3 days ago
- History
- 1 contributor
-368 lines (290 sloc)  11.8 KB
-   
-Multi-problem stack:
 
-
-Wrap Lines:
 
 Pt.1 Connecting words with '-' as blank spaces, no exceeds maxLength
 
@@ -40,6 +6,7 @@ Input: String[] words, int maxLength.
 Output: List lines.
     e.g. ["1p3acres", "is", "a", "good", "place", "to", "communicate"], 12 => {"1p3acres-is", "a-good-place", "for", "communicate"}
 复制代码Java Solution： O(n) time, O(n) space
+
 public static List<String> wrapLines1(String[] words, int maxLength){
     List<String> ans = new ArrayList<>();
     StringBuilder sb = new StringBuilder();
