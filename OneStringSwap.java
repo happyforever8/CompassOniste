@@ -50,3 +50,41 @@ Explanation: For example, swap the first character with the last character of s2
         return char1[0] == char2[1] && char1[1] == char2[0];
     }
 }
+==== follow up k pair=====
+      public static void main(String []args){
+        System.out.println("Hello World");
+        String str1 = "bankvvc";
+        String str2 = "knabcvv";
+        System.out.println(areAlmostEqualwithK(str1, str2, 2));
+     }
+     
+      public static boolean areAlmostEqualwithK(String s1, String s2, int k) {
+        char[] char1 = new char[2 * k + 1];
+        char[] char2 = new char[2 * k + 1];
+        
+        int count = 0;
+        
+        if(s1.length() != s2.length()){
+            return false;
+        }
+        
+        for(int i = 0;i<s1.length(); i++){
+            char x = s1.charAt(i);
+            char y = s2.charAt(i);
+            
+            if(x != y){
+                if(count == 2 * k + 1){
+                    return false;
+                }
+                char1[count] = x;
+                char2[count] = y;
+                count++;
+            } 
+        }
+        
+        // "bank" && "kany". (we need to validate if the swap turns out to be valid or not.)
+        
+        Arrays.sort(char1);
+        Arrays.sort(char2);
+        return String.valueOf(char1).equals(String.valueOf(char2));
+    }
